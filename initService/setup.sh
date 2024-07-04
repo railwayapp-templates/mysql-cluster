@@ -35,6 +35,7 @@ sed -e "s/@@MYSQL_ROOT_PASSWORD@@/$MYSQL_ROOT_PASSWORD/g" \
 mysqlsh root@"$MYSQL1_HOST_NAME":3306 --password=$MYSQL_ROOT_PASSWORD --file=/tmp/initCluster.js
 
 # Restart the router service
+echo "Executing GraphQL mutation to restart the router service..."
 restart_service "$ENVIRONMENT_ID" "$ROUTER_SERVICE_ID"
 
 # Remove this service
