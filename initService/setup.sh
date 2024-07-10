@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Set a default value for CLUSTER_NAME if it is not set
+CLUSTER_NAME=${CLUSTER_NAME:-railwayCluster}
+
 # Wait for MySQL to be ready
 wait_for_mysql() {
     while ! mysqladmin ping -h"$1" --silent; do
@@ -29,6 +32,7 @@ sed -e "s/@@MYSQL_ROOT_PASSWORD@@/$MYSQL_ROOT_PASSWORD/g" \
     -e "s/@@MYSQL1_HOST_NAME@@/$MYSQL1_HOST_NAME/g" \
     -e "s/@@MYSQL2_HOST_NAME@@/$MYSQL2_HOST_NAME/g" \
     -e "s/@@MYSQL3_HOST_NAME@@/$MYSQL3_HOST_NAME/g" \
+    -e "s/@@CLUSTER_NAME@@/$CLUSTER_NAME/g" \
     /initCluster.js > /tmp/initCluster.js
 
 # Run the init script
