@@ -19,11 +19,11 @@ gunzip < $COMPRESSED_DUMP_FILE > $DUMP_FILE
 
 # Restore the dump to the primary node
 echo "Restoring the dump to the primary node..."
-mysql -u $TARGET_MYSQL_USER -p$TARGET_MYSQL_PASSWORD -h $MYSQL_HOST -P $MYSQL_PORT < $DUMP_FILE
+mysql -u $TARGET_MYSQL_USER -p$TARGET_MYSQL_PASSWORD -h $TARGET_MYSQL_HOST -P $TARGET_MYSQL_PORT < $DUMP_FILE
 
 # Check cluster status on all nodes
 echo "Checking cluster status..."
-mysql -u $TARGET_MYSQL_USER -p$TARGET_MYSQL_PASSWORD -h $MYSQL_HOST -P $MYSQL_PORT -e "SHOW STATUS LIKE 'group_replication%';"
+mysql -u $TARGET_MYSQL_USER -p$TARGET_MYSQL_PASSWORD -h $TARGET_MYSQL_HOST -P $TARGET_MYSQL_PORT -e "SHOW STATUS LIKE 'group_replication%';"
 
 # Push the dump file to MinIO
 echo "Pushing the dump file to MinIO..."
