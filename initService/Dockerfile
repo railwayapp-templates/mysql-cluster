@@ -1,4 +1,4 @@
-FROM mysql:8.0
+FROM mysql:9
 
 COPY ./setup.sh /setup.sh
 COPY ./initCluster.js /initCluster.js
