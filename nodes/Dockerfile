@@ -1,4 +1,4 @@
-FROM mysql:8
+FROM mysql:8.0
 
 COPY my.cnf /etc/mysql/my.cnf
 COPY setup.sh /setup.sh
